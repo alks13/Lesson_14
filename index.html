@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Задание 14</title>
+</head>
+<body>
+<style type="text/css">
+.box1{
+    width: 100px;
+     height: 100px;
+    display:inline-block;
+    margin-right: 70px;
+    border-style:solid; 
+    border-color: black;
+    background: #1777;
+   }
+   .btn_box{
+   	 margin-right: 10px;
+   	 margin-top: 80px;
+
+   }
+   .value{
+width: 95px;
+display: inline-block;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  background: #1777;
+
+   }
+</style>
+
+				<h1 align="center">Задание 1</h1>
+<!--  5 квадратов внутри каждого из которых изначально вписана цифра 0, при клике на любой квадрат цифра в нем увеличивается на один
+* сделать чтоб внутри квадратов были кнопки +/- -->
+
+
+<div id= "main1"> 
+
+<div class="box1"> 
+	<button class="btn_box" type="button" data-count = "plus">+</button>
+	<button class="btn_box" type="button" data-count = "minus">-</button>
+	<div class="value">0</div>
+</div>
+
+<div class="box1"> 
+	<button class="btn_box" type="button" data-count = "plus">+</button>
+	<button class="btn_box" type="button" data-count = "minus">-</button>
+	<div class="value">0</div>
+</div>
+	
+<div class="box1"> 
+	<button class="btn_box" type="button" data-count = "plus">+</button>
+	<button class="btn_box" type="button" data-count = "minus">-</button>
+	<div class="value">0</div>
+</div>
+
+<div class="box1"> 
+	<button class="btn_box" type="button" data-count = "plus">+</button>
+	<button class="btn_box" type="button" data-count = "minus">-</button>
+	<div class="value">0</div>
+</div>
+
+<div class="box1"> 
+	<button class="btn_box" type="button" data-count = "plus">+</button>
+	<button class="btn_box" type="button" data-count = "minus">-</button>
+	<div class="value">0</div>
+</div>
+</div>
+
+
+					<h1 align="center">Задание 2</h1>
+<!--  5 квадратов каждый по клику меняет цвет (синий->зеленый->желтый)
+* при клике по любому из них, он переставляется в конец -->
+<style type="text/css">
+	.box2{
+    width: 100px;
+     height: 100px;
+    display:inline-block;
+    margin-right: 70px;
+    border-style:solid; 
+    border-color: black;
+   }
+</style>
+
+<div class= "main2"> 
+<div class="box2" style="background-color: blue;" >1</div>
+<div class="box2" style="background-color: blue;" >2</div>
+<div class="box2" style="background-color: blue;">3</div>
+<div class="box2" style="background-color: blue;">4</div>
+<div class="box2" style="background-color: blue;">5</div>
+</div>
+
+<script>
+				//Задание №1 
+	const $box = document.querySelector('#main1');
+	$box.addEventListener('click', function(event){
+		const $btn = event.target;
+		if(!$btn.classList.value.includes('btn_box'))return;
+		let $value = $btn.parentElement.querySelector('.value');
+		let count =	($btn.dataset.count ==='plus')? 1 : -1;
+   $value.textContent = Number($value.textContent) + count ;
+	})
+
+				//Задание №2 
+	const $box2 = document.querySelectorAll('.box2');
+	$box2.forEach((button)=>{
+		button.addEventListener('click',function(event){
+			$color = event.currentTarget.style.backgroundColor;
+			if ($color === 'blue'){
+				event.currentTarget.style.backgroundColor ='green'
+			}else if($color === 'green'){
+				event.currentTarget.style.backgroundColor ='yellow'
+			}else{
+				event.currentTarget.style.backgroundColor ='blue'
+			}
+			button.remove();
+			document.body.querySelector('.main2').append(button,' ')
+		})
+	})
+</script>
+</body>
+</html>
